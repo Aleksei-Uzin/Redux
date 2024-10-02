@@ -1,10 +1,11 @@
 import "./App.css"
+import { Counter } from "./components"
 
 const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Redux</h1>
+        <Counter />
       </header>
     </div>
   )
