@@ -5,15 +5,6 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  {
-    settings: {
-      'import/resolver': {
-        node: {
-          paths: ['./src'],
-        },
-      },
-    },
-  },
   { ignores: ['dist'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
