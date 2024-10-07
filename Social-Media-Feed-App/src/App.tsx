@@ -1,23 +1,21 @@
-import { useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { PostsMainPage } from './features/posts/PostsMainPage'
+import { SinglePostPage } from './features/posts/SinglePostPage'
+import { EditPostForm } from './features/posts/EditPostForm'
+import { Navbar } from './components/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>Social media feed app</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    <BrowserRouter>
+      <Navbar />
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<PostsMainPage />} />
+          <Route path="/posts/:postId" element={<SinglePostPage />} />
+          <Route path="/editPost/:postId" element={<EditPostForm />} />
+        </Routes>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </BrowserRouter>
   )
 }
 
