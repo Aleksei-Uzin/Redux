@@ -1,9 +1,11 @@
-import { useAppDispatch } from '@/app/hooks'
+import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { postAdded } from './postsSlice'
+import { selectCurrentUsername } from '../auth/authSlice'
 
 interface AddPostFormFields extends HTMLFormControlsCollection {
   postTitle: HTMLInputElement
   postContent: HTMLTextAreaElement
+  postAuthor: HTMLSelectElement
 }
 
 interface AddPostFormElements extends HTMLFormElement {
@@ -12,6 +14,7 @@ interface AddPostFormElements extends HTMLFormElement {
 
 export const AddPostForm = () => {
   const dispatch = useAppDispatch()
+  const userId = useAppSelector(selectCurrentUsername)!
 
   const handleSubmit = (e: React.FormEvent<AddPostFormElements>) => {
     e.preventDefault()
@@ -20,7 +23,7 @@ export const AddPostForm = () => {
     const title = elements.postTitle.value
     const content = elements.postContent.value
 
-    dispatch(postAdded(title, content))
+    dispatch(postAdded(title, content, userId))
 
     e.currentTarget.reset()
   }
