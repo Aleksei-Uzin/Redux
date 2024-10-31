@@ -1,20 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
 import App from './App'
 import store from './store'
 import './index.css'
 
 import './api/server'
 
-console.log('Initial state: ', store.getState())
+const root = createRoot(document.getElementById('root'))
 
-store.dispatch({ type: 'todos/todoAdded', payload: 'Learn about actions' })
-
-console.log('State after dispatch: ', store.getState())
-
-ReactDOM.render(
+root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
 )
