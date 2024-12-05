@@ -581,7 +581,9 @@ ul.todo-list {
 }
 
 form.colorSelection label {
-  margin: 0;
+  font-weight: 600;
+  max-width: 100%;
+  display: block;
 }
 
 form.colorSelection input[type='checkbox'] {
